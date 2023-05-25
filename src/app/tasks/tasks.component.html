@@ -1,9 +1,9 @@
 <div class="flex justify-center">
   <div class="flex flex-col gap-4 items-center p-5 h-screen w-full md:w-3/4 lg:w-4/6">
     <div class="flex font-bold w-full items-center">
-      <span class="flex font-raleway">New Task</span>
+      <span class="flex font-raleway md:text-lg">New Task</span>
     </div>
-    <div class="flex items-center content-between w-full gap-2 p-1">
+    <div class="flex items-center content-between w-full gap-2 md:gap-5 p-1">
       <div class="flex w-3/4 md:w-5/6 h-full">
         <input
           type="text"
@@ -12,9 +12,15 @@
         />
       </div>
       <div class="flex w-1/4 md:w-1/6 h-full">
-        <button class="w-full bg-[#aa72ff] h-full rounded-full text-white font-semibold text-sm">Add Task</button>
+        <button class="w-full bg-[#aa72ff] h-full rounded-full text-white font-raleway font-semibold text-xs md:text-sm">Add Task</button>
       </div>
     </div>
-    <div class="flex items-center w-full">tab area</div>
+    <div class="flex items-center w-full">
+        <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start" class="flex w-full font-raleway">
+            <mat-tab label="All Tasks"> Content 1 </mat-tab>
+            <mat-tab label="Active"> Content 2 </mat-tab>
+            <mat-tab label="Completed"> Content 3 </mat-tab>
+          </mat-tab-group>
+    </div>
   </div>
 </div>
