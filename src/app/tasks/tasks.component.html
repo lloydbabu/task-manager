@@ -59,31 +59,54 @@
         <mat-tab label="Active">
           <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
             <div
-              class="p-2 border-solid border-2 border-slate-100 rounded-md shadow-md border-l-8"
+              class="flex flex-col justify-between gap-4 p-2 border-solid border-2 border-slate-100 rounded-md shadow-md border-l-8"
               [ngClass]="{ 'border-l-green-500': task.completed === true }"
               [ngClass]="
                 task.completed ? 'border-l-green-500' : 'border-l-yellow-400'
               "
               *ngFor="let task of activeTasks"
             >
-              <div>{{ task.title }}</div>
-              <div>
-                <div>Mark as completed</div>
+              <div class="text-xs">{{ task.title }}</div>
+              <div class="text-xs flex flex-row-reverse">
+                <div
+                  class="flex flex-row items-center"
+                  *ngIf="task.completed"
+                >
+                  <span class="flex items-center justify-center"><mat-icon class="text-base text-green-500"> check_circle</mat-icon></span>
+                  <span class="flex items-center text-green-500">Completed</span>
+                </div>
+                <div class="flex flex-row items-center" *ngIf="!task.completed">
+                  <div (click)="markAsCompleted(task.id)" class="text-yellow-400 cursor-pointer">Mark as completed</div>
+                </div>
               </div>
             </div>
-          </div></mat-tab
+          </div>
+          
+          </mat-tab
         >
         <mat-tab label="Completed">
           <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
             <div
-              class="p-2 border-solid border-2 border-slate-100 rounded-md shadow-md border-l-8"
+              class="flex flex-col justify-between gap-4 p-2 border-solid border-2 border-slate-100 rounded-md shadow-md border-l-8"
               [ngClass]="{ 'border-l-green-500': task.completed === true }"
               [ngClass]="
                 task.completed ? 'border-l-green-500' : 'border-l-yellow-400'
               "
               *ngFor="let task of completedTasks"
             >
-              {{ task.title }}
+              <div class="text-xs">{{ task.title }}</div>
+              <div class="text-xs flex flex-row-reverse">
+                <div
+                  class="flex flex-row items-center"
+                  *ngIf="task.completed"
+                >
+                  <span class="flex items-center justify-center"><mat-icon class="text-base text-green-500"> check_circle</mat-icon></span>
+                  <span class="flex items-center text-green-500">Completed</span>
+                </div>
+                <div class="flex flex-row items-center" *ngIf="!task.completed">
+                  <div (click)="markAsCompleted(task.id)" class="text-yellow-400 cursor-pointer">Mark as completed</div>
+                </div>
+              </div>
             </div>
           </div>
         </mat-tab>
