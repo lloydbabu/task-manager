@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatIconModule} from '@angular/material/icon';
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import {MatTabsModule} from '@angular/material/tabs';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MatTabsModule
+    ReactiveFormsModule,
+    MatTabsModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

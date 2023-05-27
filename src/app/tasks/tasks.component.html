@@ -6,16 +6,18 @@
       <span class="flex font-raleway md:text-lg">New Task</span>
     </div>
     <div class="flex items-center content-between w-full gap-2 md:gap-5 p-1">
-      <div class="flex w-3/4 md:w-5/6 h-full">
+      <Form [formGroup]="newFormGroup"  class="flex w-3/4 md:w-5/6 h-full">
         <input
           type="text"
           class="w-full border-2 border-solid rounded-full px-3 placeholder:font-light placeholder:text-sm py-1 outline-none"
           placeholder="Enter task"
+          formControlName="newTaskInput"
         />
-      </div>
+      </Form>
       <div class="flex w-1/4 md:w-1/6 h-full">
         <button
           class="w-full bg-[#aa72ff] h-full rounded-full text-white font-raleway font-semibold text-xs md:text-sm"
+          (click)="addNewTask()"
         >
           Add Task
         </button>
@@ -26,6 +28,7 @@
         mat-stretch-tabs="false"
         mat-align-tabs="start"
         class="flex w-full font-raleway"
+        animationDuration="0ms"
       >
         <mat-tab label="All Tasks">
           <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -39,11 +42,15 @@
             >
               <div class="text-xs">{{ task.title }}</div>
               <div class="text-xs flex flex-row-reverse">
-                <div *ngIf="task.completed">
-                  <div>Completed</div>
+                <div
+                  class="flex flex-row items-center"
+                  *ngIf="task.completed"
+                >
+                  <span class="flex items-center justify-center"><mat-icon class="text-base text-green-500"> check_circle</mat-icon></span>
+                  <span class="flex items-center text-green-500">Completed</span>
                 </div>
-                <div *ngIf="!task.completed">
-                  <div>Mark as completed</div>
+                <div class="flex flex-row items-center" *ngIf="!task.completed">
+                  <div (click)="markAsCompleted(task.id)" class="text-yellow-400 cursor-pointer">Mark as completed</div>
                 </div>
               </div>
             </div>
