@@ -32,7 +32,7 @@ export class TasksComponent implements OnInit {
 
   getTasksList() {
     this.tasksService.getTasks().subscribe((response: Task[]) => {
-      this.tasks = [...response];
+      this.tasks = [...response.reverse()];
       this.activeTasks = response.filter(
         (task: Task) => task.completed !== true
       );
@@ -66,7 +66,7 @@ export class TasksComponent implements OnInit {
       userId: 1,
       completed: false
     }
-    this.tasks.push(task);
+    this.tasks.splice(0, 0, task);
 
     this.activeTasks = this.tasks.filter(
       (task: Task) => task.completed !== true
