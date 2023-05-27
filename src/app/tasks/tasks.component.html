@@ -1,5 +1,7 @@
 <div class="flex justify-center">
-  <div class="flex flex-col gap-4 items-center p-5 h-screen w-full md:w-3/4 lg:w-4/6">
+  <div
+    class="flex flex-col gap-4 items-center p-5 h-screen w-full md:w-3/4 lg:w-4/6"
+  >
     <div class="flex font-bold w-full items-center">
       <span class="flex font-raleway md:text-lg">New Task</span>
     </div>
@@ -12,15 +14,73 @@
         />
       </div>
       <div class="flex w-1/4 md:w-1/6 h-full">
-        <button class="w-full bg-[#aa72ff] h-full rounded-full text-white font-raleway font-semibold text-xs md:text-sm">Add Task</button>
+        <button
+          class="w-full bg-[#aa72ff] h-full rounded-full text-white font-raleway font-semibold text-xs md:text-sm"
+        >
+          Add Task
+        </button>
       </div>
     </div>
     <div class="flex items-center w-full">
-        <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start" class="flex w-full font-raleway">
-            <mat-tab label="All Tasks"> Content 1 </mat-tab>
-            <mat-tab label="Active"> Content 2 </mat-tab>
-            <mat-tab label="Completed"> Content 3 </mat-tab>
-          </mat-tab-group>
+      <mat-tab-group
+        mat-stretch-tabs="false"
+        mat-align-tabs="start"
+        class="flex w-full font-raleway"
+      >
+        <mat-tab label="All Tasks">
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <div
+              class="flex flex-col justify-between gap-4 p-2 border-solid border-2 border-slate-100 rounded-md shadow-md border-l-8"
+              [ngClass]="{ 'border-l-green-500': task.completed === true }"
+              [ngClass]="
+                task.completed ? 'border-l-green-500' : 'border-l-yellow-400'
+              "
+              *ngFor="let task of tasks"
+            >
+              <div class="text-xs">{{ task.title }}</div>
+              <div class="text-xs flex flex-row-reverse">
+                <div *ngIf="task.completed">
+                  <div>Completed</div>
+                </div>
+                <div *ngIf="!task.completed">
+                  <div>Mark as completed</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab label="Active">
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <div
+              class="p-2 border-solid border-2 border-slate-100 rounded-md shadow-md border-l-8"
+              [ngClass]="{ 'border-l-green-500': task.completed === true }"
+              [ngClass]="
+                task.completed ? 'border-l-green-500' : 'border-l-yellow-400'
+              "
+              *ngFor="let task of activeTasks"
+            >
+              <div>{{ task.title }}</div>
+              <div>
+                <div>Mark as completed</div>
+              </div>
+            </div>
+          </div></mat-tab
+        >
+        <mat-tab label="Completed">
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <div
+              class="p-2 border-solid border-2 border-slate-100 rounded-md shadow-md border-l-8"
+              [ngClass]="{ 'border-l-green-500': task.completed === true }"
+              [ngClass]="
+                task.completed ? 'border-l-green-500' : 'border-l-yellow-400'
+              "
+              *ngFor="let task of completedTasks"
+            >
+              {{ task.title }}
+            </div>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
     </div>
   </div>
 </div>
